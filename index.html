@@ -3,89 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combined Subscription Pricing Table</title>
+    <title>Pricing Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            text-align: center;
             background-color: #f4f4f9;
         }
-        .pricing-table {
-            width: 500px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
             padding: 20px;
-            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
-        .pricing-table h2 {
+        h1 {
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 2rem;
+            color: #333;
         }
-        .pricing-table p {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .pricing-table ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-        .pricing-table ul li {
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        .pricing-table button {
-            background-color: #6772E5;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .pricing-table button:hover {
-            background-color: #5469d4;
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="pricing-table">
-        <h2>Pro Subscription</h2>
-        <p><strong>$10/month</strong> Base Fee</p>
-        <p>+ $0.01 per API Call (usage-based)</p>
-        <ul>
-            <li>Includes base subscription</li>
-            <li>Additional charges for usage</li>
-            <li>Billed monthly</li>
-        </ul>
-        <button onclick="redirectToCheckout()">Subscribe Now</button>
+    <div class="container">
+        <h1>Our Pricing Plans</h1>
+        <p>Choose a plan that fits your needs.</p>
+        
+        <!-- PriceWell Snippet -->
+        <div id="pricewell-b6474af1-7015-4e8d-b92d-3841a070d843"></div>
+        <script src="https://snippet.pricewell.io/b6474af1-7015-4e8d-b92d-3841a070d843/pricewell.js" async=""></script>
     </div>
-
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        const stripe = Stripe('pk_test_51Qdn8xR4OWzOcHE4BAOwCWx4eb1SC4eKCqMgch7bBTECs4OxghSy8OyrKL2701M4DwnakEHSmnrTUNrWV7cN9khW00TA23D5AY');
-
-        function redirectToCheckout() {
-            stripe.redirectToCheckout({
-                lineItems: [
-                    { price: 'price_1QlypaR4OWzOcHE4HezXh2NK', quantity: 1 }, // Base fee
-                    { price: 'price_1Qlz9hR4OWzOcHE4HzLMHPNO', quantity: 1 }  // Usage-based fee
-                ],
-                mode: 'subscription',
-                successUrl: 'https://your-website.com/success',
-                cancelUrl: 'https://your-website.com/cancel',
-            }).then((result) => {
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            });
-        }
-    </script>
 </body>
 </html>
